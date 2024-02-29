@@ -15,12 +15,26 @@ class Cesar:
         Devolver la concatenacion de todos los nuevos caracteres
         '''
         mensaje_encriptado=""
-        for caracter in mensaje:
+        for caracter in mensaje.upper():
             if caracter not in self.alfabeto:
                 new_caracter = caracter
             else:
                 pos = self.alfabeto.index(caracter)
                 new_pos = pos + self.clave
+                if new_pos>len(self.alfabeto)-1:
+                    new_pos=new_pos-len(self.alfabeto)
                 new_caracter = self.alfabeto[new_pos]
             mensaje_encriptado += new_caracter
         return mensaje_encriptado
+    
+    def desencriptar(self,mensaje_encriptado):
+        mensaje_desencriptado=""
+        for caracter in mensaje_encriptado.upper():
+            if caracter not in self.alfabeto:
+                new_caracter = caracter
+            else:
+                pos = self.alfabeto.index(caracter)
+                new_pos = pos - self.clave
+                new_caracter = self.alfabeto[new_pos]
+            mensaje_desencriptado += new_caracter
+        return mensaje_desencriptado

@@ -27,3 +27,21 @@ def test_encriptar_con_espacio():
     entrada="HOLA PEPE!"
     salida="KRÑD SHSH!"
     assert cesar.encriptar(entrada)==salida
+
+def test_encriptar_con_minusculas():
+    cesar=Cesar(3)
+    entrada="Hola Pepe!"
+    salida="KRÑD SHSH!"
+    assert cesar.encriptar(entrada)==salida
+
+def test_encriptar_en_el_limite():
+    cesar = Cesar(3)
+    entrada = "XYZ"
+    salida = "ABC"
+    assert cesar.encriptar(entrada) == salida
+
+def test_desencriptar():
+    cesar = Cesar(3)
+    entrada = "KRÑD"
+    salida = "HOLA"
+    assert cesar.desencriptar(entrada) == salida
